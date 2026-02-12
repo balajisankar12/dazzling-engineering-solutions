@@ -36,12 +36,24 @@
 <body>
 
   <div class="box">
-    <h1>Thank You!</h1>
-    <p>Thank you for visiting our website.<br>
-       Your message has been successfully sent.</p>
+    <h1 id="thankMessage">Thank You!</h1>
+    <p id="subMessage">
+      Your message has been successfully sent.
+    </p>
 
     <a href="/">Back to Home</a>
   </div>
+
+  <script>
+    // Get name from URL
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+
+    if (name) {
+      document.getElementById("thankMessage").innerText = 
+        "Thank you, " + name + "!";
+    }
+  </script>
 
 </body>
 </html>
