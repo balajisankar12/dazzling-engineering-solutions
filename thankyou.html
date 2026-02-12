@@ -1,181 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Thank You - Dazzling Engineering Solutions</title>
-
-  <!-- Auto redirect to home after 6 seconds -->
-  <meta http-equiv="refresh" content="6;url=/" />
-
+  <title>Thank You</title>
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Segoe UI, sans-serif;
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 80px;
+      background-color: #f4f4f4;
     }
 
-    body{
-      background:#f4f6f9;
-      color:#222;
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
+    .box {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
     }
 
-    /* NAVBAR */
-    .nav{
-      position:sticky;
-      top:0;
-      background:#0b1b3a;
-      color:#fff;
-      padding:12px 10%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+    h1 {
+      color: #2e7d32;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      color:#fff;
-    }
-
-    .logo{
-      width:52px;
-      height:52px;
-      border-radius:10px;
-      background:#fff;
-      padding:6px;
-      object-fit:contain;
-    }
-
-    .brand-text{
-      font-size:1.05rem;
-    }
-
-    .links a{
-      color:#fff;
-      text-decoration:none;
-      margin-left:18px;
-    }
-
-    .links a:hover{
-      text-decoration:underline;
-    }
-
-    /* THANK YOU SECTION */
-    .container{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px;
-      animation: fadeIn 1s ease;
-    }
-
-    .card{
-      background:#fff;
-      padding:45px 35px;
-      border-radius:18px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.08);
-      max-width:520px;
-      width:100%;
-    }
-
-    .tick{
-      font-size:54px;
-      margin-bottom:15px;
-    }
-
-    h1{
-      color:#004aad;
-      margin-bottom:15px;
-      font-size:34px;
-    }
-
-    p{
-      margin-bottom:20px;
-      font-size:16px;
-      line-height:1.6;
-      color:#444;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:12px 26px;
-      background:#004aad;
-      color:#fff;
-      text-decoration:none;
-      border-radius:25px;
-      font-weight:600;
-      transition:0.25s;
-    }
-
-    .btn:hover{
-      background:#00c6ff;
-      transform:translateY(-2px);
-    }
-
-    .note{
-      margin-top:15px;
-      font-size:14px;
-      color:#777;
-    }
-
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(20px);}
-      to{opacity:1; transform:translateY(0);}
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: white;
+      background: #2e7d32;
+      padding: 10px 20px;
+      border-radius: 5px;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="nav">
-    <a class="brand" href="/">
-      <img src="/assets/logo.png" alt="Logo" class="logo">
-      <span class="brand-text"><b>Dazzling</b> Engineering Solutions</span>
-    </a>
+  <div class="box">
+    <h1>Thank You!</h1>
+    <p>Thank you for visiting our website.<br>
+       Your message has been successfully sent.</p>
 
-    <div class="links">
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/services.html">Services</a>
-      <a href="/team.html">Our Team</a>
-      <a href="/contact.html">Contact</a>
-    </div>
-  </nav>
-
-  <!-- THANK YOU CONTENT -->
-  <div class="container">
-    <div class="card">
-
-      <div class="tick">✅</div>
-
-      <h1>Thank You for Contacting Us!</h1>
-
-      <p>
-        Your message has been successfully received by  
-        <strong>Dazzling Engineering Solutions</strong>.
-      </p>
-
-      <p>
-        Our team will review your enquiry and respond to you shortly.  
-        We truly appreciate your interest and thank you for visiting our website.
-      </p>
-
-      <a href="/" class="btn">Back to Home</a>
-
-      <div class="note">
-        You will be automatically redirected to the homepage in a few seconds.
-      </div>
-
-    </div>
+    <a href="/">Back to Home</a>
   </div>
 
 </body>
