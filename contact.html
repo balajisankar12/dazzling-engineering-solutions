@@ -69,36 +69,16 @@
     <h1>Contact Us</h1>
 
     <!-- FORM START -->
-    <form method="POST" action="https://formsubmit.co/dazzlingenggsolutions@gmail.com">
+    <form action="sendmail.php" method="POST">
 
-      <!-- Disable Captcha -->
-      <input type="hidden" name="_captcha" value="false">
+  <input name="name" placeholder="Your Name" required>
+  <input name="email" type="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Message" rows="5" required></textarea>
 
-      <!-- Email Subject -->
-      <input type="hidden" name="_subject" value="New Customer Enquiry">
+  <button type="submit">Send</button>
 
-      <!-- Redirect to YOUR thankyou page with name -->
-      <input type="hidden" name="_next"
-             value="https://dazzlingenggsolutions.com/thankyou.html?name={{name}}">
+</form>
 
-      <!-- Auto reply to customer -->
-      <input type="hidden" name="_autoresponse"
-             value="Dear {{name}},
-
-Thank you for visiting Dazzling Engineering Solutions.
-
-We have received your message and our team will contact you shortly.
-
-Best Regards,
-Dazzling Engineering Solutions Team">
-
-      <!-- User Inputs -->
-      <input name="name" placeholder="Your Name" required>
-      <input name="email" type="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
-
-      <button type="submit">Send</button>
-    </form>
     <!-- FORM END -->
 
   </section>
