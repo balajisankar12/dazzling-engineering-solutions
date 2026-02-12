@@ -51,34 +51,27 @@
 	  </div>
 	</nav>
 
-<section>
-  <h1>Contact Us</h1>
+	<section>
+	  <h1>Contact Us</h1>
 
-  <form id="f">
-    <input id="name" placeholder="Your Name" required>
-    <input id="email" type="email" placeholder="Email" required>
-    <textarea id="msg" placeholder="Message" rows="5" required></textarea>
-    <button type="submit">Send</button>
-    <div id="status"></div>
-  </form>
-</section>
+	  <form action="https://formsubmit.co/4737733a56887f039c97a0a7fc7eaf22" method="POST">
 
-<script>
-document.getElementById("f").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const status = document.getElementById("status");
-  status.textContent = "Sending...";
+	    <!-- Disable Captcha -->
+	    <input type="hidden" name="_captcha" value="false">
 
-  // For now we just test backend ok endpoint
-  try {
-    const res = await fetch("/ok");
-    const text = await res.text();
-    status.textContent = "Server says: " + text;
-  } catch {
-    status.textContent = "Server not reachable. Please try again.";
-  }
-});
-</script>
+	    <!-- Email Subject -->
+	    <input type="hidden" name="_subject" value="New Contact Message - Dazzling Engineering Solutions">
+
+	    <!-- Redirect after submit (LOCAL) -->
+	    <input type="hidden" name="_next" value="http://localhost:8080/thankyou.html">
+
+	    <input name="name" placeholder="Your Name" required>
+	    <input name="email" type="email" placeholder="Your Email" required>
+	    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+
+	    <button type="submit">Send</button>
+	  </form>
+	</section>
 
 </body>
 </html>
