@@ -45,6 +45,28 @@
     }
 
     button:hover{background:#00c6ff}
+
+    .success-box{
+      display:none;
+      max-width:420px;
+      margin:20px auto;
+      background:#ffffff;
+      padding:30px;
+      border-radius:14px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      animation:fadeIn 0.6s ease-in-out;
+    }
+
+    .success-box h2{
+      color:#2e7d32;
+      margin-bottom:10px;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(10px);}
+      to{opacity:1; transform:translateY(0);}
+    }
   </style>
 </head>
 
@@ -52,7 +74,7 @@
 
   <nav class="nav">
     <a class="brand" href="/">
-      <img src="/assets/logo.png" alt="Dazzling Engineering Solutions Logo" class="logo">
+      <img src="/assets/logo.png" alt="Logo" class="logo">
       <span class="brand-text"><b>Dazzling</b> Engineering Solutions</span>
     </a>
 
@@ -68,36 +90,64 @@
   <section>
     <h1>Contact Us</h1>
 
-    <!-- IMPORTANT: send mail directly to company email -->
-    <form action="https://formsubmit.co/dazzlingenggsolutions@gmail.com" method="POST">
+    <form id="contactForm">
 
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="New Customer Enquiry">
-  <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html?name={{name}}">
-
-
-  <!-- Auto reply with dynamic customer name -->
-  <input
-    type="hidden"
-    name="_autoresponse"
-    value="Dear {{name}},
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Customer Enquiry">
+      <input type="hidden" name="_autoresponse"
+        value="Dear {{name}},
 
 Thank you for visiting Dazzling Engineering Solutions.
 
-We have received your message and our team will contact you shortly.
+We have received your message and will contact you shortly.
 
 Best Regards,
-Dazzling Engineering Solutions Team"
-  >
+Dazzling Engineering Solutions Team">
 
-  <input name="name" placeholder="Your Name" required>
-  <input name="email" type="email" placeholder="Your Email" required>
-  <textarea name="message" placeholder="Message" rows="5" required></textarea>
+      <input name="name" placeholder="Your Name" required>
+      <input name="email" type="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Message" rows="5" required></textarea>
 
-  <button type="submit">Send</button>
-</form>
+      <button type="submit">Send</button>
+    </form>
+
+    <!-- Custom Success Message -->
+    <div class="success-box" id="successMessage">
+      <h2 id="thankYouText"></h2>
+      <p>Your message has been successfully sent.</p>
+    </div>
 
   </section>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const successBox = document.getElementById("successMessage");
+    const thankYouText = document.getElementById("thankYouText");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const name = formData.get("name");
+
+      fetch("https://formsubmit.co/dazzlingenggsolutions@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          form.style.display = "none";
+          successBox.style.display = "block";
+          thankYouText.innerText = "Thank you, " + name + "!";
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      })
+      .catch(error => {
+        alert("Error sending message.");
+      });
+    });
+  </script>
 
 </body>
 </html>
