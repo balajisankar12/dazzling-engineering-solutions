@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Team | Dazzling Engineering Solutions</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{background:#f4f6f9;color:#222}
+
+/* NAVBAR */
+.nav{
+  position:sticky; top:0; z-index:99;
+  background:#0b1b3a; color:#fff;
+  padding:12px 10%;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.logo{width:52px;height:52px;background:#fff;padding:6px;border-radius:10px}
+.links a{color:#fff;text-decoration:none;margin-left:18px;opacity:.9}
+.links a:hover{opacity:1;text-decoration:underline}
+
+/* HEADER */
+.header{
+  padding:60px 10%;
+  text-align:center;
+}
+.header h1{
+  font-size:2.6rem;
+  color:#004aad;
+}
+
+/* TEAM GRID */
+.team{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+  padding:0 10% 70px;
+}
+.member{
+  background:#fff;
+  border-radius:16px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  transition:.4s;
+}
+.member:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 45px rgba(0,0,0,.2);
+}
+.avatar{
+  width:110px;
+  height:110px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  background:#004aad;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.2rem;
+  font-weight:700;
+}
+.member h3{
+  margin-bottom:6px;
+}
+.role{
+  color:#004aad;
+  font-weight:600;
+  font-size:.95rem;
+}
+
+footer{
+  text-align:center;
+  padding:18px;
+  background:#111827;
+  color:#9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a class="brand" href="/">
+    <img src="/assets/logo.png" class="logo">
+    <b>Dazzling Engineering Solutions</b>
+  </a>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/services.html">Services</a>
+    <a href="/team.html">Our Team</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="header">
+  <h1>Our Team</h1>
+</div>
+
+<div class="team">
+
+  <div class="member">
+    <div class="avatar">V</div>
+    <h3>Vasiraja N</h3>
+    <div class="role">CEO & Managing Director</div>
+  </div>
+
+  <div class="member">
+    <div class="avatar">S</div>
+    <h3>Saravana Sathiya Prabhahar R</h3>
+    <div class="role">CTO & Operating Officer</div>
+  </div>
+
+  <div class="member">
+    <div class="avatar">T</div>
+    <h3>Thanikachalam J</h3>
+    <div class="role">CFO & Marketing Officer</div>
+  </div>
+
+</div>
+
+<footer>
+© 2026 Dazzling Engineering Solutions. All rights reserved.
+</footer>
+
+</body>
+</html>
