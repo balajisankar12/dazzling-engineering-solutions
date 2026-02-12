@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dazzling Engineering Solutions</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+    body{background:#f4f6f9;color:#222;overflow-x:hidden}
+
+    /* ===== NAVBAR ===== */
+    .nav{
+      position:sticky; top:0; z-index:99;
+      background:#0b1b3a; color:#fff;
+      padding:12px 10%;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff}
+    .logo{
+      width:52px; height:52px; border-radius:10px;
+      background:#fff; padding:6px; object-fit:contain;
+    }
+    .brand-text{font-size:1.05rem; letter-spacing:.2px; opacity:.95}
+    .links a{color:#fff; text-decoration:none; margin-left:18px; opacity:.9}
+    .links a:hover{opacity:1; text-decoration:underline}
+
+    /* ===== HERO WITH BACKGROUND IMAGE ===== */
+    .hero-image{
+      position: relative;
+      min-height: 88vh;
+      background: url('/assets/hero-bg.jpg') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 60px 10%;
+    }
+
+    /* Overlay for readability */
+    .hero-overlay{
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.72),
+        rgba(0,0,0,0.15)
+      );
+    }
+
+    .hero-content{
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      color: #fff;
+      text-align: left;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .hero-big-logo{
+      width: 180px;
+      height: auto;
+      background: #fff;
+      padding: 14px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+
+    .hero-content h1{
+      font-size: 3.2rem;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      animation: down 1.2s ease;
+    }
+
+    .hero-content p{
+      font-size: 1.05rem;
+      opacity: .92;
+      margin-bottom: 22px;
+      animation: up 1.2s ease;
+    }
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      border:none;
+      border-radius:28px;
+      padding:12px 24px;
+      cursor:pointer;
+      font-weight:700;
+      transition:0.25s;
+    }
+    .btn.primary{background:#fff;color:#004aad}
+    .btn.primary:hover{transform:scale(1.06)}
+    .btn.secondary{background:transparent;color:#fff;border:2px solid #fff}
+    .btn.secondary:hover{background:rgba(255,255,255,.15)}
+
+    /* ===== SECTION ===== */
+    section{padding:70px 10%}
+    h2{color:#004aad;text-align:center;margin-bottom:18px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:18px}
+    .card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 10px 25px rgba(0,0,0,.08);transition:.35s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 16px 30px rgba(0,0,0,.14)}
+
+    footer{text-align:center;padding:18px;background:#111827;color:#9ca3af}
+
+    @keyframes down{from{transform:translateY(-40px);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes up{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png" alt="Dazzling Engineering Solutions Logo" class="logo">
+      <span class="brand-text"><b>Dazzling</b> Engineering Solutions</span>
+    </a>
+
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/services.html">Services</a>
+	  <a href="/team.html">Our Team</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <section class="hero-image">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <img src="/assets/logo.png" class="hero-big-logo" alt="DES Logo">
+
+      <h1>
+        To grow with the <br>
+        next generation <br>
+        of engineering tech.
+      </h1>
+
+      <p>Innovative • Reliable • Smart Engineering</p>
+
+      <div class="cta">
+        <button class="btn primary" onclick="location.href='/services.html'">View Services</button>
+        <button class="btn secondary" onclick="location.href='/contact.html'">Contact Us</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCROLL DOWN CONTENT -->
+  <section>
+    <h2>Why Choose Us</h2>
+    <div class="cards">
+      <div class="card">✅ Professional engineering approach</div>
+      <div class="card">⚙️ Strong design & development support</div>
+      <div class="card">🚀 Fast delivery and reliable service</div>
+      <div class="card">🤝 Customer-focused solutions</div>
+    </div>
+  </section>
+
+  <footer>© 2026 Dazzling Engineering Solutions. All rights reserved.</footer>
+
+</body>
+</html>
