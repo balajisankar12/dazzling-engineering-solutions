@@ -1,41 +1,36 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Allow only POST request
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: /contact.html");
+    exit();
+}
 
-    $name = strip_tags($_POST['name']);
-    $email = strip_tags($_POST['email']);
-    $message = strip_tags($_POST['message']);
+$name = htmlspecialchars($_POST['name']);
+$email = htmlspecialchars($_POST['email']);
+$message = htmlspecialchars($_POST['message']);
 
-    // Company email
-    $to = "dazzlingenggsolutions@gmail.com";
-    $subject = "New Customer Enquiry from Website";
+// Company email
+$to = "dazzlingenggsolutions@gmail.com";
+$subject = "New Enquiry from Website";
 
-    $body = "You have received a new message:\n\n";
-    $body .= "Name: $name\n";
-    $body .= "Email: $email\n\n";
-    $body .= "Message:\n$message";
+$body = "New Contact Form Submission\n\n";
+$body .= "Name: $name\n";
+$body .= "Email: $email\n\n";
+$body .= "Message:\n$message";
 
-    $headers = "From: no-reply@dazzlingenggsolutions.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
+$headers = "From: no-reply@dazzlingenggsolutions.com\r\n";
+$headers .= "Reply-To: $email\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    // Send mail to company
-    mail($to, $subject, $body, $headers);
+// Send mail
+if(mail($to, $subject, $body, $headers)) {
 
-    // Auto reply to customer
-    $replySubject = "Thank You for Contacting Dazzling Engineering Solutions";
-
-    $replyMessage = "Dear $name,\n\n";
-    $replyMessage .= "Thank you for visiting our website.\n";
-    $replyMessage .= "We have received your message and our team will contact you shortly.\n\n";
-    $replyMessage .= "Best Regards,\n";
-    $replyMessage .= "Dazzling Engineering Solutions Team";
-
-    $replyHeaders = "From: dazzlingenggsolutions@gmail.com\r\n";
-
-    mail($email, $replySubject, $replyMessage, $replyHeaders);
-
-    // Redirect to thankyou page with name
+    // Redirect to thankyou page
     header("Location: thankyou.html?name=" . urlencode($name));
     exit();
+
+} else {
+    echo "Mail sending failed. Please try again later.";
 }
 ?>
