@@ -71,29 +71,31 @@
     <!-- IMPORTANT: send mail directly to company email -->
     <form action="https://formsubmit.co/dazzlingenggsolutions@gmail.com" method="POST">
 
-      <!-- Disable captcha -->
-      <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Customer Enquiry">
+  <input type="hidden" name="_next" value="/thankyou.html">
 
-      <!-- Email subject to company -->
-      <input type="hidden" name="_subject" value="New Customer Enquiry">
+  <!-- Auto reply with dynamic customer name -->
+  <input
+    type="hidden"
+    name="_autoresponse"
+    value="Dear {{name}},
 
-      <!-- Redirect after submit -->
-      <input type="hidden" name="_next" value="/thankyou.html">
+Thank you for visiting Dazzling Engineering Solutions.
 
-      <!-- Auto reply to customer -->
-      <input
-        type="hidden"
-        name="_autoresponse"
-        value="Thank you for contacting Dazzling Engineering Solutions. We have received your message and will respond shortly."
-      >
+We have received your message and our team will contact you shortly.
 
-      <!-- Customer fields -->
-      <input name="name" placeholder="Your Name" required>
-      <input name="email" type="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
+Best Regards,
+Dazzling Engineering Solutions Team"
+  >
 
-      <button type="submit">Send</button>
-    </form>
+  <input name="name" placeholder="Your Name" required>
+  <input name="email" type="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Message" rows="5" required></textarea>
+
+  <button type="submit">Send</button>
+</form>
+
   </section>
 
 </body>
