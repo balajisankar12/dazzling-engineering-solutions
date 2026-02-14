@@ -1,24 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Thank You</title>
+<meta charset="UTF-8">
+<title>Contact - Dazzling Engineering Solutions</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{background:#f4f6f9;color:#222}
+
+.nav{
+  position:sticky; top:0; z-index:99;
+  background:#0b1b3a; color:#fff;
+  padding:12px 10%;
+  display:flex; align-items:center; justify-content:space-between;
+}
+
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff}
+.logo{
+  width:52px; height:52px; border-radius:10px;
+  background:#fff; padding:6px; object-fit:contain;
+}
+.brand-text{font-size:1.05rem; letter-spacing:.2px; opacity:.95}
+
+.links a{color:#fff; text-decoration:none; margin-left:18px; opacity:.9}
+.links a:hover{opacity:1; text-decoration:underline}
+
+section{padding:70px 10%}
+h1{color:#004aad;text-align:center;margin-bottom:18px}
+
+form{
+  max-width:420px;margin:18px auto;background:#fff;
+  padding:22px;border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08)
+}
+
+input,textarea{
+  width:100%;padding:12px;margin:10px 0;
+  border-radius:10px;border:1px solid #cbd5e1
+}
+
+button{
+  width:100%;padding:12px;border:none;border-radius:28px;
+  background:#004aad;color:#fff;font-weight:700;cursor:pointer
+}
+
+button:hover{background:#00c6ff}
+
+#status{
+  text-align:center;
+  margin-top:15px;
+  font-weight:bold;
+}
+</style>
 </head>
-<body style="font-family:Arial;text-align:center;padding:80px;">
 
-  <h1 id="thankMessage">Thank You!</h1>
-  <p>Your message has been successfully sent.</p>
+<body>
 
-  <a href="/">Back to Home</a>
+<nav class="nav">
+  <a class="brand" href="/">
+    <img src="/assets/logo.png" alt="Logo" class="logo">
+    <span class="brand-text"><b>Dazzling</b> Engineering Solutions</span>
+  </a>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get("name");
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/services.html">Services</a>
+    <a href="/team.html">Our Team</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</nav>
 
-    if (name) {
-      document.getElementById("thankMessage").innerText =
-        "Thank you, " + name + "!";
-    }
-  </script>
+<section>
+<h1>Contact Us</h1>
+
+<form id="contact-form">
+  <input type="text" name="from_name" placeholder="Your Name" required>
+  <input type="email" name="from_email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Message" rows="5" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+<p id="status"></p>
+
+</section>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+document.getElementById("contact-form")
+.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  emailjs.sendForm(
+    "YOUR_SERVICE_ID",
+    "YOUR_TEMPLATE_ID",
+    this
+  )
+  .then(function() {
+    window.location.href = "thankyou.html";
+  }, function(error) {
+    document.getElementById("status").innerText =
+      "Failed to send message. Please try again.";
+  });
+});
+</script>
 
 </body>
 </html>
