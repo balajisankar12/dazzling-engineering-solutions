@@ -90,23 +90,38 @@ button:hover{background:#00c6ff}
 
 <script>
   (function () {
-    emailjs.init("0H1UWMzZ1Q-jlW46s"); // Public key
+    emailjs.init("0H1UWMzZ1Q-jlW46s");
   })();
 
-  document.getElementById("contact-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
+  document.getElementById("contact-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
     const statusEl = document.getElementById("status");
     statusEl.innerText = "Sending...";
 
-    emailjs.sendForm("service_6xnurr3", "template_947b35k", this)
-      .then(function () {
-        window.location.href = "thankyou.html";
-      })
-      .catch(function (error) {
-        console.log("EmailJS error:", error);
-        statusEl.innerText = "Failed: " + (error?.text || JSON.stringify(error));
+    const name = this.from_name.value.trim();
+    const email = this.from_email.value.trim();
+    const msg = this.message.value.trim();
+
+    try {
+      // 1) Send to HOST/ADMIN
+      await emailjs.send("service_6xnurr3", "template_admin", {
+        from_name: name,
+        from_email: email,
+        message: msg
       });
+
+      // 2) Send THANK YOU to CUSTOMER
+      await emailjs.send("service_6xnurr3", "template_customer", {
+        to_email: email,
+        from_name: name,
+        message: msg
+      });
+
+      window.location.href = "thankyou.html";
+    } catch (err) {
+      console.log(err);
+      statusEl.innerText = "Failed to send. Please try again.";
+    }
   });
 </script>
 
