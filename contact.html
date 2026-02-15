@@ -89,26 +89,25 @@ button:hover{background:#00c6ff}
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
-(function(){
-  emailjs.init("0H1UWMzZ1Q-jlW46s");
-})();
+  (function () {
+    emailjs.init("0H1UWMzZ1Q-jlW46s"); // Public key
+  })();
 
-document.getElementById("contact-form")
-.addEventListener("submit", function(event){
-  event.preventDefault();
+  document.getElementById("contact-form").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  emailjs.sendForm(
-    "service_6xnurr3",
-    "template_947b35k",
-    this
-  )
-  .then(function() {
-    window.location.href = "thankyou.html";
-  }, function(error) {
-    document.getElementById("status").innerText =
-      "Failed to send message. Please try again.";
+    const statusEl = document.getElementById("status");
+    statusEl.innerText = "Sending...";
+
+    emailjs.sendForm("service_6xnurr3", "template_947b35k", this)
+      .then(function () {
+        window.location.href = "thankyou.html";
+      })
+      .catch(function (error) {
+        console.log("EmailJS error:", error);
+        statusEl.innerText = "Failed: " + (error?.text || JSON.stringify(error));
+      });
   });
-});
 </script>
 
 </body>
