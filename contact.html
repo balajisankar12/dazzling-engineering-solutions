@@ -88,10 +88,9 @@ button:hover{background:#00c6ff}
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-  (function () {
-    emailjs.init("0H1UWMzZ1Q-jlW46s"); // public key
-  })();
+  emailjs.init("0H1UWMzZ1Q-jlW46s");
 
   document.getElementById("contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -100,36 +99,30 @@ button:hover{background:#00c6ff}
     const btn = this.querySelector("button[type='submit']");
 
     const name = this.from_name.value.trim();
-    const email = this.from_email.value.trim();
+    const email = this.from_email.value.trim();   // ✅ fetch customer email
     const msg = this.message.value.trim();
 
     btn.disabled = true;
-    statusEl.style.color = "#111";
     statusEl.innerText = "Sending...";
 
     try {
-      // ADMIN
-      statusEl.innerText = "Sending to admin...";
-      const r1 = await emailjs.send("service_6xnurr3", "template_abq15ef", {
+      // ✅ Admin mail (goes to your gmail)
+      await emailjs.send("service_6xnurr3", "template_abq15ef", {
         from_name: name,
         from_email: email,
         message: msg
       });
-      console.log("Admin sent:", r1);
 
-      // CUSTOMER
-      statusEl.innerText = "Sending thank-you to customer...";
-      const r2 = await emailjs.send("service_6xnurr3", "template_acjecbk", {
-        to_email: email,
+      // ✅ Customer mail (goes to customer's email)
+      await emailjs.send("service_6xnurr3", "template_acjecbk", {
+        to_email: email,          // ✅ send to customer
         from_name: name,
         message: msg
       });
-      console.log("Customer sent:", r2);
 
       window.location.href = "thankyou.html";
     } catch (err) {
-      console.log("EmailJS error full:", err);
-      statusEl.style.color = "red";
+      console.log(err);
       statusEl.innerText = "Failed: " + (err?.text || err?.message || JSON.stringify(err));
       btn.disabled = false;
     }
