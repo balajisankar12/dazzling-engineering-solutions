@@ -89,64 +89,53 @@ button:hover{background:#00c6ff}
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
-  // 1) Init EmailJS with your PUBLIC KEY
   (function () {
-    emailjs.init("0H1UWMzZ1Q-jlW46s");
+    emailjs.init("0H1UWMzZ1Q-jlW46s"); // public key
   })();
 
-  // 2) On submit
   document.getElementById("contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const statusEl = document.getElementById("status");
     const btn = this.querySelector("button[type='submit']");
 
-    // Read values
     const name = this.from_name.value.trim();
     const email = this.from_email.value.trim();
     const msg = this.message.value.trim();
 
-    // Basic validation
-    if (!name || !email || !msg) {
-      statusEl.innerText = "Please fill all fields.";
-      return;
-    }
-
-    // Disable button to avoid double submit
     btn.disabled = true;
-    btn.innerText = "Sending...";
-    statusEl.innerText = "Sending to admin...";
+    statusEl.style.color = "#111";
+    statusEl.innerText = "Sending...";
 
     try {
-      // ✅ A) Send mail to ADMIN/HOST
-      // Template: template_abq15ef
-      await emailjs.send("service_6xnurr3", "template_abq15ef", {
+      // ADMIN
+      statusEl.innerText = "Sending to admin...";
+      const r1 = await emailjs.send("service_6xnurr3", "template_abq15ef", {
         from_name: name,
         from_email: email,
         message: msg
       });
+      console.log("Admin sent:", r1);
 
+      // CUSTOMER
       statusEl.innerText = "Sending thank-you to customer...";
-
-      // ✅ B) Send THANK YOU mail to CUSTOMER
-      // Template: template_acjecbk
-      await emailjs.send("service_6xnurr3", "template_acjecbk", {
-        to_email: email,     // IMPORTANT: customer template must use {{to_email}}
+      const r2 = await emailjs.send("service_6xnurr3", "template_acjecbk", {
+        to_email: email,
         from_name: name,
         message: msg
       });
+      console.log("Customer sent:", r2);
 
-      // ✅ Done
       window.location.href = "thankyou.html";
-
     } catch (err) {
-      console.log("EmailJS error:", err);
+      console.log("EmailJS error full:", err);
+      statusEl.style.color = "red";
       statusEl.innerText = "Failed: " + (err?.text || err?.message || JSON.stringify(err));
       btn.disabled = false;
-      btn.innerText = "Send";
     }
   });
 </script>
+
 
 </body>
 </html>
